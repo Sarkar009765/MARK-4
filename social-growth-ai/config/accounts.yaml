@@ -1,0 +1,94 @@
+# Social Media Account Configuration
+# Add your accounts here - one section per platform
+
+# Instagram Accounts
+instagram:
+  - username: "your_username"
+    password: "your_password"
+    niche: "motivation"
+    max_posts_per_day: 3
+    auto_engage: true
+    engage_targets:  # Accounts to engage with
+      - "target_account_1"
+      - "target_account_2"
+    hashtags_main:  # Core hashtags to use
+      - "#motivation"
+      - "#success"
+      - "#mindset"
+
+# Facebook Accounts
+facebook:
+  - page_id: "your_page_id"
+    access_token: "your_token"
+    niche: "business"
+    max_posts_per_day: 2
+    auto_engage: true
+
+# Twitter/X Accounts
+twitter:
+  - username: "your_username"
+    api_key: "your_api_key"
+    api_secret: "your_api_secret"
+    access_token: "your_access_token"
+    access_secret: "your_access_secret"
+    niche: "tech"
+    max_posts_per_day: 5
+    auto_retweet: false
+
+# TikTok Accounts
+tiktok:
+  - username: "your_username"
+    api_key: "your_key"
+    niche: "entertainment"
+    max_posts_per_day: 2
+
+# Global Settings
+settings:
+  # Safety limits
+  safety_mode: "strict"  # strict, medium, relaxed
+  max_daily_actions: 100
+  rate_limit_buffer: 10  # Keep 10% under API limits
+  
+  # Content rules
+  max_hashtags: 20
+  min_caption_length: 50
+  max_caption_length: 2200
+  
+  # Posting schedule (24-hour format)
+  posting_times:
+    - "08:00"
+    - "12:30"
+    - "19:00"
+  
+  # Rest days (no posting)
+  rest_days: ["Sunday"]
+  
+  # Engagement rules
+  auto_reply_comments: true
+  reply_to_dms: false
+  ignore_spam: true
+  
+  # Content filters
+  block_words:  # Don't post if these appear
+    - "scam"
+    - "click here"
+    - "limited time"
+  require_approval_words:  # Require human review if detected
+    - "giveaway"
+    - "contest"
+    - "discount"
+  
+  # A/B Testing
+  ab_test_enabled: true
+  test_variants: 2
+  
+  # Analytics
+  track_competitors: true
+  competitor_list:
+    - "competitor_account_1"
+    - "competitor_account_2"
+  
+  # Reporting
+  daily_report: true
+  weekly_report: true
+  alert_on_failures: true

@@ -1,0 +1,59 @@
+# Docker Compose for Social Growth AI
+
+version: '3.8'
+
+services:
+  # Main application
+  app:
+    build: .
+    container_name: social-growth-ai
+    restart: unless-stopped
+    environment:
+      - AI_PROVIDER=${AI_PROVIDER:-openai}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - DATABASE_URL=sqlite:///social_growth.db
+      - REDIS_URL=redis://redis:6379/0
+      - DEFAULT_NICHE=${DEFAULT_NICHE:-motivation}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./sessions:/app/sessions
+    depends_on:
+      - redis
+    networks:
+      - ai-network
+
+  # Redis for task queue
+  redis:
+    image: redis:7-alpine
+    container_name: social-growth-redis
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+    networks:
+      - ai-network
+
+  # Optional: Web dashboard (Streamlit)
+  dashboard:
+    build: .
+    container_name: social-growth-dashboard
+    command: streamlit run dashboard.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - app
+    networks:
+      - ai-network
+
+networks:
+  ai-network:
+    driver: bridge
+
+volumes:
+  redis-data:

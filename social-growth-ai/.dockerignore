@@ -1,0 +1,15 @@
+.git
+.env
+*.pyc
+__pycache__
+*.db
+*.log
+logs/
+sessions/
+temp/
+.vscode/
+.idea/
+data/
+*.egg-info/
+dist/
+build/
