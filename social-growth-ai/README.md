@@ -1,33 +1,111 @@
-# 🚀 Social Growth AI
+# Social Growth AI
 
-**Autonomous AI Agent for Social Media Growth**
+[](#social-growth-ai)
 
-An intelligent multi-agent system that automates social media content creation, posting, engagement, and analytics. Inspired by OpenAgents architecture with Hermes-style function calling and Paperclip simplicity.
+> Autonomous AI Agent for Social Media Growth - Runs from `python main.py`, creates content, engages audience, and analyzes performance automatically.
 
----
-
-## ✨ Features
-
-| Feature | Description |
-|---------|-------------|
-| 🤖 **5 AI Agents** | Strategy, Content, Growth, Reply, Analytics - working together |
-| 📱 **Multi-Platform** | Instagram, Facebook, Twitter/X support |
-| 📝 **Auto Content** | AI-generated captions, hashtags, image prompts |
-| 💪 **Smart Engagement** | Auto-like, comment, follow, DM |
-| 💬 **AI Replies** | Context-aware comment/DM responses |
-| 📊 **Analytics** | Performance tracking & self-optimization |
-| 📅 **Scheduler** | Automated posting schedule |
-| 🌐 **Web Dashboard** | Streamlit-based UI |
-| 🔌 **REST API** | FastAPI endpoints |
-| 🐳 **Docker** | Ready to deploy |
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://python.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/Sarkar009765/MARK-4?style=social)](https://github.com/Sarkar009765/MARK-4/stargazers)
 
 ---
 
-## 🏗️ Architecture
+## What Is It?
+
+[](#what-is-it)
+
+**Social Growth AI** is a multi-agent system that automates your social media presence. It combines 5 specialized AI agents that work together to:
+- 📝 Generate viral content (captions, hashtags, image prompts)
+- 💪 Auto-engage with your audience (likes, comments, follows)
+- 💬 Reply to comments/DMs with AI-powered responses
+- 📊 Track performance and self-optimize
+- 📅 Schedule posts for optimal times
+
+Built with **OpenAgents architecture** + **Hermes-style function calling** + **Paperclip simplicity**.
+
+---
+
+## Key Features
+
+[](#key-features)
+
+- 🤖 **5 AI Agents** - Strategy, Content, Growth, Reply, Analytics
+- 📱 **Multi-Platform** - Instagram, Facebook, Twitter/X
+- 🎯 **Auto Content** - AI generates captions, hashtags, image prompts  
+- 💪 **Smart Engagement** - Auto-like, comment, follow, DM
+- 💬 **AI Replies** - Context-aware comment/DM responses
+- 📊 **Analytics** - Performance tracking & self-optimization
+- 📅 **Scheduler** - Automated posting schedule
+- 🌐 **Web Dashboard** - Streamlit-based UI
+- 🔌 **REST API** - FastAPI endpoints
+- 🐳 **Docker** - Ready to deploy
+
+---
+
+## Installation
+
+[](#installation)
+
+```bash
+# Clone the project
+git clone https://github.com/Sarkar009765/MARK-4.git
+cd MARK-4
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Copy environment file
+cp .env.example .env
+
+# Add your API keys (optional for testing)
+# OPENAI_API_KEY=your_key_here
+```
+
+---
+
+## Quick Start
+
+[](#quick-start)
+
+### Test Without API Key (Mock Mode)
+```bash
+# Check system status
+python main.py status
+
+# Run full AI cycle
+python main.py full
+```
+
+### Run with Real AI
+```bash
+# Add your OpenAI key in .env
+OPENAI_API_KEY=sk-...
+
+# Run content generation
+python main.py content --niche fitness
+```
+
+### Web Dashboard
+```bash
+streamlit run dashboard.py
+```
+Then open: http://localhost:8501
+
+### REST API
+```bash
+uvicorn server:app --reload
+```
+Then open: http://localhost:8000/docs
+
+---
+
+## Architecture
+
+[](#architecture)
 
 ```
 ┌─────────────────────────────────────────────┐
-│           ORCHESTRATOR (Main Brain)         │
+│           ORCHESTRATOR (Main Brain)        │
 │     (Coordinates all agents)                │
 └──────┬──────────┬──────────┬───────────┬────┘
        │          │          │           │
@@ -44,88 +122,16 @@ An intelligent multi-agent system that automates social media content creation, 
 
 ---
 
-## 🚀 Quick Start
+## Configuration
 
-### 1. Clone the Project
-```bash
-git clone https://github.com/Sarkar009765/MARK-4.git
-cd MARK-4
-```
-
-### 2. Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Configure Environment
-```bash
-# Copy example env file
-cp .env.example .env
-
-# Add your API keys in .env:
-OPENAI_API_KEY=your_openai_key_here
-```
-
-### 4. Run Tests (Mock Mode - No API Key Needed!)
-```bash
-# Check system status
-python main.py status
-
-# Run full AI cycle
-python main.py full
-```
-
----
-
-## 📖 Usage Examples
-
-### CLI Commands
-
-```bash
-# Full cycle - run all agents
-python main.py full
-
-# Content only - create posts
-python main.py content --niche fitness
-
-# Engagement only - grow audience
-python main.py engage
-
-# Quick post - emergency content
-python main.py quick --prompt "motivation"
-
-# Schedule posts
-python main.py schedule --times 08:00 19:00
-
-# Check status
-python main.py status
-
-# Test platform connection
-python main.py test instagram
-```
-
-### Web Dashboard
-```bash
-streamlit run dashboard.py
-```
-Then open: http://localhost:8501
-
-### REST API Server
-```bash
-uvicorn server:app --reload
-```
-Then open: http://localhost:8000/docs
-
----
-
-## 🛠️ Configuration
+[](#configuration)
 
 Edit `.env` file:
 
 ```env
 # AI Provider (openai, anthropic, ollama)
 AI_PROVIDER=openai
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=your_key_here
 
 # Database
 DATABASE_URL=sqlite:///social_growth.db
@@ -140,7 +146,76 @@ SAFETY_MODE=strict
 
 ---
 
-## 📁 Project Structure
+## Connect Real APIs
+
+[](#connect-real-apis)
+
+### Instagram
+```env
+INSTAGRAM_USERNAME=your_username
+INSTAGRAM_PASSWORD=your_password
+```
+
+### Facebook
+```env
+FACEBOOK_ACCESS_TOKEN=your_token
+FACEBOOK_PAGE_ID=your_page_id
+```
+
+### Twitter
+```env
+TWITTER_API_KEY=xxx
+TWITTER_API_SECRET=xxx
+```
+
+---
+
+## Demo Results
+
+[](#demo-results)
+
+```
+✅ strategy: success - Trends found: 2, Themes: 3
+✅ content: success - Posts created: 3  
+✅ growth: success - Engagement: 3
+✅ reply: success - Processed: 3
+✅ analytics: success - Engagement rate: 5.2%
+```
+
+---
+
+## Docker
+
+[](#docker)
+
+```bash
+# Edit .env with your keys first
+cp .env.example .env
+
+# Start all services
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+```
+
+---
+
+## How It Works
+
+[](#how-it-works)
+
+1. **Strategy Agent** - Analyzes trends, competitors, plans content themes
+2. **Content Agent** - Generates captions, hashtags, image prompts
+3. **Growth Agent** - Auto-engages: likes, comments, follows, DMs
+4. **Reply Agent** - AI-powered responses to comments/DMs
+5. **Analytics Agent** - Tracks performance, suggests optimizations
+
+---
+
+## Project Structure
+
+[](#project-structure)
 
 ```
 MARK-4/
@@ -161,115 +236,56 @@ MARK-4/
 │   └── analytics_agent.py
 │
 ├── platforms/           # Platform integrations
-│   ├── instagram.py    # Simulated handler
-│   ├── instagram_api.py # Real API
-│   ├── facebook.py     # Facebook Graph API
-│   └── twitter.py      # Twitter API v2
+│   ├── instagram.py
+│   ├── instagram_api.py
+│   ├── facebook.py
+│   └── twitter.py
 │
 ├── core/
-│   ├── settings.py     # Config management
-│   └── scheduler.py   # Post scheduler
+│   ├── settings.py
+│   └── scheduler.py
 │
 ├── database/
-│   └── models.py       # SQLAlchemy models
+│   └── models.py
 │
 └── config/
-    ├── accounts.yaml   # Account configs
-    └── prompts/        # AI prompt templates
+    ├── accounts.yaml
+    └── prompts/
 ```
 
 ---
 
-## 🔧 Connect Real APIs
+## Contributing
 
-### Instagram
-1. Add credentials in `.env`:
-```env
-INSTAGRAM_USERNAME=your_username
-INSTAGRAM_PASSWORD=your_password
-```
+[](#contributing)
 
-### Facebook
-1. Create Facebook Developer Account
-2. Create App → Get Page Access Token
-3. Add in `.env`:
-```env
-FACEBOOK_ACCESS_TOKEN=your_token
-FACEBOOK_PAGE_ID=your_page_id
-```
-
-### Twitter
-1. Apply for Twitter Developer Account
-2. Create App in Developer Portal
-3. Add in `.env`:
-```env
-TWITTER_API_KEY=xxx
-TWITTER_API_SECRET=xxx
-```
+See [CONTRIBUTING.md](CONTRIBUTING.md). Pull requests welcome!
 
 ---
 
-## 🐳 Run with Docker
+## License
 
-```bash
-# Edit .env with your keys first
-cp .env.example .env
+[](#license)
 
-# Start all services
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-```
+[MIT License](LICENSE)
 
 ---
 
-## 🤖 How the AI Agents Work
+## Thanks
 
-1. **Strategy Agent** - Analyzes trends, competitors, plans content themes
-2. **Content Agent** - Generates captions, hashtags, image prompts
-3. **Growth Agent** - Auto-engages: likes, comments, follows, DMs
-4. **Reply Agent** - AI-powered responses to comments/DMs
-5. **Analytics Agent** - Tracks performance, suggests optimizations
+[](#thanks)
 
----
-
-## 📊 Demo Results
-
-```
-✅ strategy: success - Trends found: 2, Themes: 3
-✅ content: success - Posts created: 3  
-✅ growth: success - Engagement: 3
-✅ reply: success - Processed: 3
-✅ analytics: success - Engagement rate: 5.2%
-```
+- **Kimi k2.6** - AI model powering this project
+- **OpenAgents** - Architecture inspiration
+- **Moonshot AI** - AI provider
 
 ---
 
-## ⚠️ Important Notes
+## Star History
 
-- **Mock Mode**: System works without API keys (uses simulated responses)
-- **Real AI**: Add OpenAI/Anthropic key for real AI generation
-- **Rate Limits**: Built-in safety limits to prevent account restrictions
-- **Ethical**: Designed for legitimate growth, not spam
+[](#star-history)
 
----
-
-## 📝 License
-
-MIT License
-
----
-
-## 👨‍💻 Created By
-
-**Sarkar009765** - Using Kimi k2.6 (Moonshot AI)
-
----
-
-## 🌟 Star this Project!
-
-If you find this useful, please give it a ⭐!
+[![Star History Chart](https://api.star-history.com/svg?repos=Sarkar009765/MARK-4&type=date)](https://star-history.com/#Sarkar009765/MARK-4)
 
 ---
 
